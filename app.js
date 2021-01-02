@@ -1,5 +1,5 @@
 
-const tasks = JSON.parse(localStorage.getItem("tasks"));
+const tasks = JSON.parse(localStorage.getItem("tasks"))||[];
 
 
 /*const tasks = [
@@ -39,17 +39,17 @@ let themes = {
 let themeSelect = document.querySelector("#theme");
 let lastSelectedTheme = localStorage.getItem("lastSelectedTheme") || 'light';
 
-
   if (lastSelectedTheme !== "light"){
     setTheme(lastSelectedTheme);
     themeSelect.value = lastSelectedTheme;
   }
 
-
 let temp = document.querySelector("#task_temp");
 let title = temp.content.querySelector("h2");
 let desc = temp.content.querySelector("p");
 (function(arrOfTasks){
+  if(!arrOfTasks) return;
+  
   arrOfTasks.forEach(function(item){
     insertTask(item);
 
